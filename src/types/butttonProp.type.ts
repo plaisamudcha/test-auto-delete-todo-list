@@ -1,4 +1,4 @@
 export type ButtonProp = {
   name: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent) => void;
 };

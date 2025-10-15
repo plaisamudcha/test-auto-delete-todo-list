@@ -10,7 +10,9 @@ function TableData({ data, name, onclick }: NameProp) {
     (state) => state.removeVegetableFromVegetables
   );
 
-  const handleRemove = (type: string, name: string) => {
+  const handleRemove = (e: React.MouseEvent, type: string, name: string) => {
+    e.stopPropagation();
+
     if (type === "Fruit") {
       removeFruitFromFruits(name);
     } else if (type === "Vegetable") {
@@ -29,7 +31,9 @@ function TableData({ data, name, onclick }: NameProp) {
             <div key={index}>
               <ButtonList
                 name={item.name}
-                onClick={() => handleRemove(item.type, item.name)}
+                onClick={(e: React.MouseEvent) =>
+                  handleRemove(e, item.type, item.name)
+                }
               />
             </div>
           ))
